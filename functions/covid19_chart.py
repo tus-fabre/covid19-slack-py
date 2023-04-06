@@ -101,7 +101,7 @@ def chartMonthlyConfiguration(country, filename):
 # [NOTE]
 #  アクセスするURL:
 #     https://disease.sh/v3/covid-19/historical/Japan?lastdays=8
-#/
+#
 def chartWeeklyConfiguration(filename):
 
   status = False

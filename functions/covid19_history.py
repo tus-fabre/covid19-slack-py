@@ -47,7 +47,6 @@ def getHistoricalData(country, lastdays, dateL, caseL, deathL):
     return status
 
   url = BASE_URL + "historical/" + country + "?lastdays=" + lastdays
-  print(url)
   result = httpGet(url)
   if result != None:
     

@@ -9,7 +9,7 @@
 # 
 # [NOTE]
 # 
-#/
+#
 import requests
 
 #
@@ -27,17 +27,19 @@ import requests
 # 
 # [NOTE]
 # 
-#/
+#
 def httpGet(url):
     data = None
 
     try:
         result = requests.get(url)
+    except requests.exceptions.ConnectTimeout:
+        print("[TIMEOUT]", url)
+    else:
         if result.status_code == 200:
             data = result.json() # JSONに変換する
-            #print(data)
-    except Exception as e:
-        print(e)
+        else:
+            print("[STATUS CODE]", result.status_code)
 
     return data
 

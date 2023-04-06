@@ -61,11 +61,13 @@ def psqlGet(query):
     conn = getConnection()
     cur = conn.cursor()
     cur.execute(query)
+  except psycopg2.Error as e:
+    print("[DATABASE ERROR]")
+    print(format(e))
+  else:
     results = cur.fetchall()
     cur.close()
     conn.close()
-  except Exception as e:
-    print(e)
 
   return results
 

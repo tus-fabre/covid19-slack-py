@@ -132,8 +132,8 @@ def command_hello(ack, command, respond):
     try:
         status = chartWeeklyConfiguration(file_path)
         if status == True:
-            result = app.client.files_upload(
-                channels=channel, # Current Channel ID
+            result = app.client.files_upload_v2(
+                channel=channel, # Current Channel ID
                 #title="Generated PNG File",
                 file=file_path,
                 initial_comment="画像ファイルを添付します",
@@ -286,8 +286,8 @@ def action_csv_generate(body, ack, respond):
     message = ''
     if csv_file != None:
         try:
-            result = app.client.files_upload(
-                channels=channel, # Current Channel ID
+            result = app.client.files_upload_v2(
+                channel=channel, # Current Channel ID
                 #title="Generated CSV File",
                 file=csv_file,
                 initial_comment="CSVファイルを添付します",
@@ -421,8 +421,8 @@ def action_graph_history(body, ack, respond):
     try:
         status = chartMonthlyConfiguration(country, file_path)
         if status == True:
-            result = app.client.files_upload(
-                channels=channel, # Current Channel ID
+            result = app.client.files_upload_v2(
+                channel=channel, # Current Channel ID
                 #title="Generated PNG File",
                 file=file_path,
                 initial_comment="画像ファイルを添付します",
@@ -474,8 +474,8 @@ def action_report_history(body, ack, respond):
             now = currentTime()
             pdf_file = pdfGenerateFile(now, country, png_file)
             if pdf_file != None:
-                result = app.client.files_upload(
-                    channels=channel, # Current Channel ID
+                result = app.client.files_upload_v2(
+                    channel=channel, # Current Channel ID
                     #title="Generated PDF File",
                     file=pdf_file,
                     initial_comment="PDFファイルを添付します",

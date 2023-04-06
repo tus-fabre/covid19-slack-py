@@ -19,8 +19,8 @@ if (BASE_URL == None):
     print("[環境変数未設定] BASE_URL")
 # 選択メニューの項目数
 NUM_MENUITEMS=os.environ.get('NUM_OF_MENU_ITEMS')
-if (BASE_URL == None):
-    print("[環境変数未設定] NUM_OF_MENU_ITEMS")
+if (NUM_MENUITEMS == None):
+  print("[環境変数未設定] NUM_OF_MENU_ITEMS")
 numMenuItems = 20
 if NUM_MENUITEMS != None:
   numMenuItems = int(NUM_MENUITEMS)
@@ -297,7 +297,7 @@ def getCountries():
     }
     blocks.append(objheader)
 
-    menu_num = math.floor(len(result) / numMenuItems) + 1
+    menu_num = math.ceil(len(result) / numMenuItems)
     n = 0
     m = 1
     while (m <= menu_num):
