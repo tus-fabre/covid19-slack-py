@@ -25,7 +25,7 @@ dbUrl = os.environ.get('DB_URL')
 # [OUTPUTS] 
 #  Connectionオブジェクト
 # 
-# [NOTE]
+# [NOTES]
 #
 def getConnection():
     urllib.parse.uses_netloc.append("postgres")
@@ -52,7 +52,7 @@ def getConnection():
 #  対象となるSQL文に応じたJSON構造（リスト）が返る。
 #  失敗したら、Noneを返す。
 # 
-# [NOTE]
+# [NOTES]
 #
 def psqlGet(query):
   results = None
@@ -82,7 +82,7 @@ def psqlGet(query):
 # 
 # [OUTPUTS] なし
 # 
-# [NOTE]
+# [NOTES]
 #
 def psqlInsert(query):
 
@@ -94,7 +94,7 @@ def psqlInsert(query):
     conn.commit()
     conn.close()
   except Exception as e:
-    print(e)
+    print(format(e))
 
 #
 # END OF FILE

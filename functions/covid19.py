@@ -40,20 +40,25 @@ if NUM_MENUITEMS != None:
 #  成功: 翻訳された文字列
 #  失敗or見つからない: None
 # 
-# [NOTE]
-#　'Côte d'Ivoire'と'Lao People's Democrat...のように国名にシングルクォートがある場合、「'」の前に「'」を付ける
+# [NOTES]
 #
+hashtable = None # ハッシュテーブルを初期化する
 def translateCountryName(country):
   outText = None
-  # シングルクォートを置換する
-  dest = country.replace("'", "''")
-  # countriesテーブルにアクセスし、入力する国名と合致する日本語名を取得する（大文字と小文字を無視する）
-  sql = "SELECT name_ja FROM countries WHERE LOWER(iso_code)=LOWER('" + dest + "') OR LOWER(name_en)=LOWER('" + dest + "')"
-  result = psqlGet(sql)
-  #print(result)
 
-  if result != None and len(result) > 0:
-    outText = result[0][0] # Tupleより最初の要素を取り出す
+  global hashtable # 国名ハッシュテーブルを再利用するためグローバル化
+  if hashtable == None:
+    hashtable = _createCountryHashTable()
+
+  if hashtable != None:
+    #dest = country.replace("'", "''").lower()
+    dest = country.lower()
+    try:
+      outText = hashtable[dest]
+    except KeyError:
+      # データベースに登録されていない新たな国名や船名の場合そのまま
+      print ("[MISSING COUNTRY]" + dest)
+      outText = country
 
   return outText
 
@@ -70,7 +75,7 @@ def translateCountryName(country):
 #  成功: {blocks:[<見出し>, <セクション>]}
 #  失敗: {type:"plain_text", text:"<エラーメッセージ>"}
 # 
-# [NOTE]
+# [NOTES]
 #  アクセスするURL:
 #   https://disease.sh/v3/covid-19/countries/<country>
 #   あるいはcountryがallのときは
@@ -277,7 +282,7 @@ def getCountryInfo(country):
 #  成功: {blocks:[<見出し>, <セクション>]}
 #  失敗: {type:"plain_text", text:"<エラーメッセージ>"}
 # 
-# [NOTE]
+# [NOTES]
 #  選択メニューは20カ国ごと（環境変数 NUM_OF_MENU_ITEMSで変更可能）に1つ作成する
 #
 def getCountries():
@@ -364,6 +369,37 @@ def getCountries():
     }
 
   return retVal
+
+# ---------- Utilities ----------
+
+#
+# [FUNCTION] _createCountryHashTable()
+#
+# [DESCRIPTION]
+#  国コードあるいは英語の国名と日本語名をハッシュテーブルとして作成する
+# 
+# [INPUTS] None
+# 
+# [OUTPUTS]
+#  成功: ハッシュテーブル {<ISOコード>: <日本語国名>, <英語国名>: <日本語国名>, ...}
+#  失敗or見つからない: None
+# 
+# [NOTES]
+#  日本語国名取得を高速するためにハッシュテーブルを準備する
+#
+def _createCountryHashTable():
+  hashtable = None
+  
+  sql = "SELECT LOWER(iso_code) AS iso, LOWER(name_en) AS name_en, name_ja FROM countries"
+  results = psqlGet(sql)
+  if results != None and len(results) > 0:
+    hashtable = {}
+    for result in results:
+      hashtable[result[0]] = result[2] # <ISOコード>: <日本語国名>
+      hashtable[result[1]] = result[2] # <英語国名>: <日本語国名>
+
+  print("HASHTABLE CREATED")
+  return hashtable
 
 #
 # END OF FILE

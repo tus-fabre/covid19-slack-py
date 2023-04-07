@@ -32,7 +32,7 @@ from .covid19 import translateCountryName
 #  成功: True
 #  失敗: False
 # 
-# [NOTE]
+# [NOTES]
 #  アクセスするURL:
 #     https://disease.sh/v3/covid-19/historical/<Country>?lastdays=31
 #
@@ -98,7 +98,7 @@ def chartMonthlyConfiguration(country, filename):
 #  成功: True
 #  失敗: False
 # 
-# [NOTE]
+# [NOTES]
 #  アクセスするURL:
 #     https://disease.sh/v3/covid-19/historical/Japan?lastdays=8
 #

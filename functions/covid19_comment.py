@@ -6,7 +6,7 @@
 # [DESCRIPTION]
 #  モーダルビューを用いたコメント機能に関わる関数を定義するファイル
 # 
-# [NOTE]
+# [NOTES]
 #
 import os
 import json
@@ -81,7 +81,7 @@ def commentModalView(title, text, parameters):
 #  成功: true
 #  失敗: false
 # 
-# [NOTE]
+# [NOTES]
 #　'Côte d'Ivoire'と'Lao People's Democrat...のように国名にシングルクォートがある場合、「'」の前に「'」を付ける
 #
 def commentInsert(country, datetime, user, comment):
@@ -124,7 +124,7 @@ def commentInsert(country, datetime, user, comment):
 # [OUTPUTS]
 #  {datetime:<日時>, comment:<注釈>}の配列
 # 
-# [NOTE]
+# [NOTES]
 #　'Côte d'Ivoire'と'Lao People's Democrat...のように国名にシングルクォートがある場合、「'」の前に「'」を付ける
 #
 def commentGet(country):

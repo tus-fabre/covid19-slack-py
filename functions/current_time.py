@@ -6,7 +6,7 @@
 # [DESCRIPTION]
 #  現在の時刻を表示する関数を定義するファイル
 # 
-# [NOTE]
+# [NOTES]
 #
 import datetime
 
@@ -21,7 +21,7 @@ import datetime
 # [OUTPUTS]
 #  YYYY-MM-DD HH24:MI:SS
 # 
-# [NOTE]
+# [NOTES]
 #
 def currentTime():
     dt = datetime.datetime.now()
@@ -39,7 +39,7 @@ def currentTime():
 # [OUTPUTS]
 #  YYYYMMDDHH24MISS
 # 
-# [NOTE]
+# [NOTES]
 #
 def currentTimeStamp():
     dt = datetime.datetime.now()
@@ -57,7 +57,7 @@ def currentTimeStamp():
 # [OUTPUTS]
 #  現在の時間：0 ～ 24
 # 
-# [NOTE]
+# [NOTES]
 #
 def currentHour():
     dt = datetime.datetime.now()

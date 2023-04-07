@@ -7,6 +7,7 @@
 #  Lesson Final - Slack APIプログラミング (Python版)
 #
 # [NOTES]
+#  'Côte d'Ivoire'と'Lao People's Democrat'の場合、問題あり
 #
 import os
 import sys
@@ -61,7 +62,7 @@ print("現在の時刻", datetime)
 # [OUTPUTS]
 #  respond - 'こんにちは <ユーザー名>!'
 #
-# [NOTE]
+# [NOTES]
 #  イベントがトリガーされたチャンネルに say() でメッセージを送信する
 #
 @app.message("hello")
@@ -144,7 +145,7 @@ def command_hello(ack, command, respond):
         else:
             respond(f'画像ファイルは作成できませんでした。')
     except Exception as e:
-        print(e)
+        print(format(e))
         respond(f'エラーが発生しました。')
 
 #
@@ -250,7 +251,7 @@ def action_comment(body, ack, client):
     try:
         client.views_open(trigger_id=body['trigger_id'], view=objModal) # モーダルビューを開く
     except Exception as e:
-        print(e)
+        print(format(e))
 
 #
 # [ACTION METHOD] action-csv-generate
@@ -296,7 +297,7 @@ def action_csv_generate(body, ack, respond):
             if pyEnv == 'development':
                 print(result)
         except Exception as e:
-            print(e)
+            print(format(e))
             message = 'ファイルをアップロードできません。'
     else:
         message = 'ファイルを作成できません。'
@@ -433,7 +434,7 @@ def action_graph_history(body, ack, respond):
         else:
             respond(f'画像ファイルは作成できませんでした。')
     except Exception as e:
-        print(e)
+        print(format(e))
         respond(f'エラーが発生しました。')
 
 #
@@ -487,7 +488,7 @@ def action_report_history(body, ack, respond):
         else:
             respond(f'画像ファイルは作成できませんでした。')
     except Exception as e:
-        print(e)
+        print(format(e))
         respond(f'エラーが発生しました。')
 
 #
@@ -561,7 +562,7 @@ def callback_put_comment(ack, view, client):
         if pyEnv == 'development':
             print(result)
     except Exception as e:
-        print(e)
+        print(format(e))
 
 #
 # サーバーを起動する

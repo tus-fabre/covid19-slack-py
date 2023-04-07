@@ -42,7 +42,7 @@ FONT_NAME = 'IPAexGothic'
 #  成功: 作成されたPDFファイル名
 #  失敗: null
 # 
-# [NOTE]
+# [NOTES]
 #  アクセスするURL:
 #   https://disease.sh/v3/covid-19/countries/<Country>
 #   countryが'all'の場合

@@ -6,7 +6,7 @@ set client_encoding to 'UTF8';
  * [DESCRIPTION]
  *  国名変換テーブルを定義する
  * 
- * [NOTE]
+ * [NOTES]
  *  国コード（ISOコード）、英語表記の国名を日本語表記にするために用いる。
  *  実際のデータはcountries.csvをロードする。
  */
@@ -24,7 +24,7 @@ CREATE TABLE countries (
  * [DESCRIPTION]
  *  国ごとに注釈を記録する
  * 
- * [NOTE]
+ * [NOTES]
  */
 CREATE TABLE annotation (
     id serial,

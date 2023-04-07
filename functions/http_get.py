@@ -7,7 +7,7 @@
 # [DESCRIPTION]
 #  HTTP URLにアクセスして値を取得する関数を定義するファイル
 # 
-# [NOTE]
+# [NOTES]
 # 
 #
 import requests
@@ -25,7 +25,7 @@ import requests
 #  対象となるURLに応じたJSON構造が返る。
 #  失敗したら、Noneを返す。
 # 
-# [NOTE]
+# [NOTES]
 # 
 #
 def httpGet(url):

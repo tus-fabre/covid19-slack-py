@@ -6,7 +6,7 @@
 # [DESCRIPTION]
 #  新型コロナウィルスの感染状況をCSVファイルに保存する関数を定義するファイル
 # 
-# [NOTE]
+# [NOTES]
 #  生成するCSVファイルは環境変数LOCAL_FOLDERに設定されたフォルダーに保存される。
 #
 import os
@@ -29,7 +29,7 @@ LOCAL_FOLDER = os.environ.get("LOCAL_FOLDER")
 #  成功: 作成されたCSVファイル名
 #  失敗: None
 # 
-# [NOTE]
+# [NOTES]
 #  アクセスするURL:
 #     https://disease.sh/v3/covid-19/historical/<Country>?lastdays=all
 #
@@ -54,7 +54,7 @@ def csvGenerateFile(country):
            writer.writerow([dateL[i], caseL[i] , deathL[i]]) 
       print("[INFO] ", output_file, 'は保存されました')
     except Exception as e:
-      print(e)
+      print(format(e))
       output_file = None
 
   return output_file
