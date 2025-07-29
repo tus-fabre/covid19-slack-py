@@ -12,6 +12,8 @@ import math
 from .http_get import httpGet
 from .psql_get import psqlGet
 from .covid19_comment import commentGet
+from dotenv import load_dotenv
+load_dotenv()
 
 # disease.shにアクセスするためのベースURL
 BASE_URL=os.environ.get('BASE_URL')

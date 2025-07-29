@@ -22,6 +22,9 @@ from functions.covid19_chart import chartMonthlyConfiguration, chartWeeklyConfig
 from functions.covid19_pdf import pdfGenerateFile
 from functions.current_time import currentTime, currentHour
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # Botトークンからアプリの初期化
 app = None
 bot_token = os.environ.get('SLACK_BOT_TOKEN')

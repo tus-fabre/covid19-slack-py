@@ -12,6 +12,9 @@ import os
 import datetime
 
 from .http_get import httpGet
+from dotenv import load_dotenv
+load_dotenv()
+
 # disease.shにアクセスするためのベースURL
 BASE_URL=os.environ.get('BASE_URL')
 

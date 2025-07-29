@@ -11,6 +11,9 @@
 import os
 import json
 from .psql_get import psqlGet, psqlInsert
+from dotenv import load_dotenv
+load_dotenv()
+
 pyEnv=os.environ.get('PY_ENV')
 
 #

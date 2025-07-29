@@ -13,6 +13,9 @@ import os
 import csv
 from .current_time import currentTimeStamp
 from .covid19_history import getHistoricalData
+from dotenv import load_dotenv
+load_dotenv()
+
 # ファイルを保存するフォルダー名
 LOCAL_FOLDER = os.environ.get("LOCAL_FOLDER")
 

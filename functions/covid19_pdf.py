@@ -22,6 +22,9 @@ from reportlab.lib.units import mm, cm
 from reportlab.lib.pagesizes import A4, portrait
 from reportlab.pdfbase.ttfonts import TTFont
 
+from dotenv import load_dotenv
+load_dotenv()
+
 BASE_URL=os.environ.get("BASE_URL")
 LOCAL_FOLDER = os.environ.get("LOCAL_FOLDER")
 FONT_FILE = './fonts/ipaexg.ttf'

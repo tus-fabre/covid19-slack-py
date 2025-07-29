@@ -5,11 +5,13 @@
 #
 # [DESCRIPTION]
 #  PostgreSQLにアクセスして値を取得する関数を定義するファイル
-# 
+#  環境変数DB_URLが定義されていない場合、すべての関数はNoneを返却する。
 #
 import os
 import psycopg2
 import urllib.parse
+from dotenv import load_dotenv
+load_dotenv()
 
 # データベース接続先を取得
 dbUrl = os.environ.get('DB_URL')
@@ -28,16 +30,19 @@ dbUrl = os.environ.get('DB_URL')
 # [NOTES]
 #
 def getConnection():
-    urllib.parse.uses_netloc.append("postgres")
-    url = urllib.parse.urlparse(dbUrl)
-    conn = psycopg2.connect(
-        database=url.path[1:],
-        user=url.username,
-        password=url.password,
-        host=url.hostname,
-        port=url.port
-    )
-    return conn
+  if (dbUrl == None):
+    return None
+
+  urllib.parse.uses_netloc.append("postgres")
+  url = urllib.parse.urlparse(dbUrl)
+  conn = psycopg2.connect(
+    database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port=url.port
+  )
+  return conn
   
 #
 # [FUNCTION] psqlGet()
@@ -57,6 +62,9 @@ def getConnection():
 def psqlGet(query):
   results = None
 
+  if (dbUrl == None):
+    return results
+  
   try:
     conn = getConnection()
     cur = conn.cursor()
@@ -86,6 +94,9 @@ def psqlGet(query):
 #
 def psqlInsert(query):
 
+  if (dbUrl == None):
+    return
+  
   try:
     conn = getConnection()
     cur = conn.cursor()
